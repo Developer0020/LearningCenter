@@ -1,0 +1,50 @@
+### Student Create
+POST localhost:8081/student/create
+Content-Type: application/json
+
+{
+  "name": "men",
+  "surname": "men",
+  "level": 3,
+  "age": 21,
+  "gender": "male"
+}
+
+### Get by Id
+GET localhost:8081/student/getById/2
+
+### Update query
+PUT localhost:8081/student/update/2
+Content-Type: application/json
+
+{
+  "name": "Bobir",
+  "surname": "men",
+  "level": 3,
+  "age": 21,
+  "gender": "male"
+}
+
+### Student List
+GET localhost:8081/student/list
+
+### Delete Student
+DELETE localhost:8081/student/delete/2
+
+### Get by Name
+GET localhost:8081/student/getByName/Bobir
+
+### Get by Surname
+GET localhost:8081/student/getBySurname/men
+
+### Get by Level
+GET localhost:8081/student/getByLevel/3
+
+### Get by Gender
+GET localhost:8081/student/getByGender/male
+
+### Get by Given Date
+GET localhost:8081/student/getByGivenDate/2023-04-04
+
+### Get by between given dates
+GET localhost:8081/student/getByBetweenGivenDates?dateFrom=2023-04-04&dateTo=2023-04-05
