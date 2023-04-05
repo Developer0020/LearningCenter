@@ -65,18 +65,19 @@ public class StudentController {
     }
 
     @GetMapping("/getByGender/{gender}")
-    public ResponseEntity<List<StudentEntity>> getByGender(@PathVariable("gender") String gender){
+    public ResponseEntity<List<StudentEntity>> getByGender(@PathVariable("gender") String gender) {
         return ResponseEntity.ok(studentService.getByGender(gender));
     }
 
     @GetMapping("/getByGivenDate/{date}")
-    public ResponseEntity<List<StudentEntity>>getByGivenDate(@PathVariable("date")String date){
+    public ResponseEntity<List<StudentEntity>> getByGivenDate(@PathVariable("date") String date) {
         return ResponseEntity.ok(studentService.getByGivenDate(date));
     }
+
     @GetMapping("/getByBetweenGivenDates")
-    public ResponseEntity<List<StudentEntity>>getByBetweenGivenDates(@RequestParam("dateFrom") String dateFrom,
-                                                                     @RequestParam("dateTo") String dateTo){
-        return ResponseEntity.ok(studentService.getByBetweenGivenDates(dateFrom,dateTo));
+    public ResponseEntity<List<StudentEntity>> getByBetweenGivenDates(@RequestParam("dateFrom") String dateFrom,
+                                                                      @RequestParam("dateTo") String dateTo) {
+        return ResponseEntity.ok(studentService.getByBetweenGivenDates(dateFrom, dateTo));
     }
 
 }

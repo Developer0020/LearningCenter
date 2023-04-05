@@ -80,7 +80,6 @@ public class StudentService {
         entity.setGender(dto.getGender());
         entity.setLevel(dto.getLevel());
         studentRepository.save(entity);
-        dto.setId(entity.getId());
         return true;
     }
 
@@ -89,12 +88,13 @@ public class StudentService {
         studentRepository.delete(entity);
         return true;
     }
+
     public List<StudentEntity> getByName(String name) {
         return new LinkedList<>(studentRepository.findByName(name));
     }
 
     public List<StudentEntity> getBySurname(String surname) {
-    return new LinkedList<>(studentRepository.findBySurname(surname));
+        return new LinkedList<>(studentRepository.findBySurname(surname));
     }
 
     public List<StudentEntity> getByLevel(Integer level) {
@@ -114,6 +114,6 @@ public class StudentService {
     }
 
     public List<StudentEntity> getByBetweenGivenDates(String dateFrom, String dateTo) {
-        return new LinkedList<>(studentRepository.findByCreatedDateBetween(LocalDate.parse(dateFrom),LocalDate.parse(dateTo)));
+        return new LinkedList<>(studentRepository.findByCreatedDateBetween(LocalDate.parse(dateFrom), LocalDate.parse(dateTo)));
     }
 }
