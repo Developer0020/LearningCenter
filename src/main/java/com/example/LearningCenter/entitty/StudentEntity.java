@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,4 +28,7 @@ public class StudentEntity {
     private String gender;
     @Column(name = "created_date")
     private LocalDate createdDate = LocalDate.now();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private Set<StudentCourseMarkEntity> studentSet;
 }

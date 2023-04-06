@@ -74,6 +74,9 @@ public class StudentService {
 
     public boolean update(Integer id, StudentDTO dto) {
         StudentEntity entity = getById(id);
+        if (dto ==null){
+            throw new AppBadRequestException("dto is null ? ? ?");
+        }
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
         entity.setAge(dto.getAge());

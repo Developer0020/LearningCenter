@@ -1,0 +1,12 @@
+### Create student_course_mark
+POST localhost:8081/studentCourseMark/create
+Content-Type:application/json
+
+{
+  "course_id": 1,
+  "student_id" : 1,
+  "mark": 5
+}
+
+### Get student_course_mark byId
+GET localhost:8081/studentCourseMark/get/1

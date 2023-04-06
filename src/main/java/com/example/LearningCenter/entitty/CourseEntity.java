@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,4 +23,7 @@ public class CourseEntity {
     private Integer duration;
     @Column(name = "created_date")
     private LocalDate created_date=LocalDate.now();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+    private Set<StudentCourseMarkEntity> coureset;
 }
