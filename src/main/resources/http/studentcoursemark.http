@@ -5,8 +5,72 @@ Content-Type:application/json
 {
   "course_id": 1,
   "student_id" : 1,
-  "mark": 5
+  "mark":66
 }
 
 ### Get student_course_mark byId
 GET localhost:8081/studentCourseMark/get/1
+
+### Update student_course_mark
+PUT localhost:8081/studentCourseMark/update/1
+Content-Type: application/json
+
+{
+  "course_id": 1,
+  "student_id" : 1,
+  "mark": 5454
+}
+
+### student_course_mark list
+GET localhost:8081/studentCourseMark/list
+
+### student get by day
+GET localhost:8081/studentCourseMark/getByDay/2023-04-06
+
+### Get Student Between dates
+GET localhost:8081/studentCourseMark/getByBetweenDay?student_id=1&fromDate=2023-04-06&toDate=2023-04-07
+
+### Get Course Mark
+GET localhost:8081/studentCourseMark/getByMark/1
+
+### Get Last Mark By day
+GET localhost:8081/studentCourseMark/lastCourseMarker/1
+
+### Get Max Mark limit 3
+GET localhost:8081/studentCourseMark/getMaxMarkList/1
+
+### Get first Mark
+GET localhost:8081/studentCourseMark/getFirstMark/1
+
+### Get first Mark by Course
+GET localhost:8081/studentCourseMark/getFirstMarkByCourseId/1?id=1
+
+### Get Student Max Mark By Course
+GET localhost:8081/studentCourseMark/getStudentMaxMarkByCourse/1?id=1
+
+### Get AVG mark List
+GET localhost:8081/studentCourseMark/getAVGMarkList/1
+
+### Get AVG By Course Mark
+GET localhost:8081/studentCourseMark/getAVGByCourseMark/1?course_id=1
+
+### Get Count By Mark
+GET localhost:8081/studentCourseMark/getCountByMark/1?mark=8
+
+### Get Max Mark By Course
+GET localhost:8081/studentCourseMark/getMaxMarkByCourse?course_id=1
+
+### Get AVG Mark By Course
+GET localhost:8081/studentCourseMark/getAVGMarkByCourse/1
+
+### Get Count By Course
+GET localhost:8081/studentCourseMark/getCountByCourse/1
+
+### Paging
+GET localhost:8081/studentCourseMark/paging
+
+### Paging With Studen tId
+GET localhost:8081/studentCourseMark/pagingWithStudentId?studentId=1
+
+### Paging With CourseId
+GET localhost:8081/studentCourseMark/pagingWithCoursetId?courseId=2

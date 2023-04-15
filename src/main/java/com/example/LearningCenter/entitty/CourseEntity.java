@@ -22,7 +22,7 @@ public class CourseEntity {
     @Column(name = "duration")
     private Integer duration;
     @Column(name = "created_date")
-    private LocalDate created_date=LocalDate.now();
+    private LocalDate createdDate=LocalDate.now();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private Set<StudentCourseMarkEntity> coureset;

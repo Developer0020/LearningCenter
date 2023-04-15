@@ -1,4 +1,4 @@
-package com.example.LearningCenter.dto;
+package com.example.LearningCenter.filter;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,12 +7,11 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class CourseDTO {
+public class CourseFilterRequestDTO {
     private Integer id;
     private String name;
     private Double price;
     private Integer duration;
-    private LocalDate createdDate;
+    private LocalDate dateFrom;
+    private LocalDate dateTo;
 }
-
-//id,name,price,duration,date

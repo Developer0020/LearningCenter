@@ -26,3 +26,23 @@ Content-Type: application/json
 
 ### Delete Course
 DELETE localhost:8081/course/delete/2
+
+### Paging
+GET localhost:8081/course/paging
+
+### Paging - price
+POST localhost:8081/course/paging-price
+Content-Type: application/json
+
+{
+  "price": 500
+}
+
+### Paging - price -between
+POST localhost:8081/course/paging-price-between
+Content-Type: application/json
+
+{
+  "fromPrice": 400,
+  "toPrice": 8000
+}

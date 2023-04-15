@@ -1,13 +1,14 @@
 package com.example.LearningCenter.controller;
 
 import com.example.LearningCenter.dto.StudentDTO;
+import com.example.LearningCenter.filter.StudentFilterRequestDTO;
 import com.example.LearningCenter.entitty.StudentEntity;
 import com.example.LearningCenter.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -44,8 +45,8 @@ public class StudentController {
         return ResponseEntity.ok(studentService.delete(id));
     }
 
-    @GetMapping("/getByName/{name}")
-    public ResponseEntity<List<StudentEntity>> getByName(@PathVariable("name") String name) {
+    @GetMapping("/getByName")
+    public ResponseEntity<List<StudentEntity>> getByName(@RequestParam("name") String name) {
         return ResponseEntity.ok(studentService.getByName(name));
     }
 
@@ -80,4 +81,44 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getByBetweenGivenDates(dateFrom, dateTo));
     }
 
+    @PostMapping("/paging")
+    public ResponseEntity<?> paging(
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam(value = "size", defaultValue = "30") int size,
+            @RequestBody StudentFilterRequestDTO dto) {
+        return ResponseEntity.ok(studentService.paging(dto, page, size));
+
+    }
+
+    @PostMapping(value = "/paging-name")
+    public ResponseEntity<Page<StudentDTO>> pagingWithName(@RequestParam(value = "page", defaultValue = "1") int page,
+                                                           @RequestParam(value = "size", defaultValue = "30") int size,
+                                                           @RequestBody StudentFilterRequestDTO filter) {
+        Page<StudentDTO> response = studentService.paginationWithName(filter.getName(), page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    // Student Pagination by given Level. List should be sorted by id.
+    @GetMapping("/paging-Level")
+    public ResponseEntity<Page<StudentDTO>> pagingWithLevel(@RequestParam(value = "page", defaultValue = "1") int page,
+                                                            @RequestParam(value = "size", defaultValue = "30") int size,
+                                                            @RequestParam(value = "level") Integer level) {
+        Page<StudentDTO> response = studentService.pagingWithLevel(level, page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    // Pagination by given gender.  List should be sorted by createdDate.
+    @PostMapping("/paging-gender")
+    public ResponseEntity<Page<StudentDTO>> pagingWithGender(@RequestParam(value = "page", defaultValue = "1") int page,
+                                                             @RequestParam(value = "size", defaultValue = "30") int size,
+                                                             @RequestBody StudentFilterRequestDTO filter) {
+        Page<StudentDTO> response = studentService.pagingWithGender(filter.getGender(), page, size);
+        return ResponseEntity.ok(response);
+    }
+
+//    @PostMapping(value = "/filter")
+//    public ResponseEntity<?> filter(@RequestBody StudentFilterRequestDTO filterDTO) {
+//        studentService.filter(filterDTO);
+//        return ResponseEntity.ok().build();
+//    }
 }

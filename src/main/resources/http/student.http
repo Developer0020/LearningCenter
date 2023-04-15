@@ -32,19 +32,46 @@ GET localhost:8081/student/list
 DELETE localhost:8081/student/delete/2
 
 ### Get by Name
-GET localhost:8081/student/getByName/Bobir
+GET localhost:8081/student/getByName?name='Bobir'
 
 ### Get by Surname
-GET localhost:8081/student/getBySurname/men
+GET localhost:8081/student/getBySurname/'men'
 
 ### Get by Level
 GET localhost:8081/student/getByLevel/3
 
 ### Get by Gender
-GET localhost:8081/student/getByGender/male
+GET localhost:8081/student/getByGender/'male'
 
 ### Get by Given Date
-GET localhost:8081/student/getByGivenDate/2023-04-04
+GET localhost:8081/student/getByGivenDate/'2023-04-04'
 
-### Get by between given dates
+### Get by between given dates'
 GET localhost:8081/student/getByBetweenGivenDates?dateFrom=2023-04-04&dateTo=2023-04-05
+
+### Student pagination with name
+POST localhost:8081/student/paging-name
+Content-Type:  application/json
+
+{
+  "name": "ELLL"
+}
+
+### Paging With Level
+GET localhost:8081/student/pagingWithLevel?level=1
+
+### Paging With Gender
+POST localhost:8081/student/paging-gender
+Content-Type: application/json
+
+{
+  "gender": "MALE"
+}
+
+### Student filter
+POST localhost:8081/student/paging
+Content-Type: application/json
+
+{
+"surname": "ELLA"
+}

@@ -28,7 +28,18 @@ public class StudentEntity {
     private String gender;
     @Column(name = "created_date")
     private LocalDate createdDate = LocalDate.now();
+    @Column(name = "visible")
+    private Boolean visible = true;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
     private Set<StudentCourseMarkEntity> studentSet;
+
+    public StudentEntity() {
+    }
+
+    public StudentEntity(Integer id, String name, String surname) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+    }
 }
